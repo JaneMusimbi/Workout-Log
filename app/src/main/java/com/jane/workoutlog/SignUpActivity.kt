@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
@@ -71,6 +72,11 @@ class SignUpActivity : AppCompatActivity() {
                 tilEmail.error="Email is required"
                 error=true
             }
+           if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+               tilEmail.error="Not a valid email address"
+               error=true
+
+           }
             if (Password.isBlank()){
                 tilPassword.error="Password is required"
                 error=true
@@ -80,7 +86,9 @@ class SignUpActivity : AppCompatActivity() {
                 error=true
             }
 
-            if (!error){
+            if (Password!=Confirm){
+                tilConfirm.error="Wrong Password"
+                error=true
 
             }
     }
