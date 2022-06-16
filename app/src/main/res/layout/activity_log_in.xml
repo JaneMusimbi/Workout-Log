@@ -30,6 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
         android:layout_marginEnd="24dp"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
         android:layout_marginEnd="24dp"
         android:hint="@string/Password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,14 +77,16 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="144dp"
+        android:backgroundTint="#03A9F4"
         android:text="Login"
         android:textSize="24sp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlPassword"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvSignup"

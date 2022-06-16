@@ -18,23 +18,26 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
-        btnLogin=findViewById(R.id.btnLogin)
-        tilEmail=findViewById(R.id.tilEmail)
-        etEmail=findViewById(R.id.etEmail)
-        tilPassword=findViewById(R.id.tlPassword)
-        etPassword=findViewById(R.id.etPassword)
-        tvSignUp = findViewById(R.id.tvSignup)
+        castviews()}
+        fun castviews() {
+            btnLogin = findViewById(R.id.btnLogin)
+            tilEmail = findViewById(R.id.tilEmail)
+            etEmail = findViewById(R.id.etEmail)
+            tilPassword = findViewById(R.id.tlPassword)
+            etPassword = findViewById(R.id.etPassword)
+            tvSignUp = findViewById(R.id.tvSignup)
 
-        tvSignUp.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            tvSignUp.setOnClickListener {
+                val intent = Intent(this, SignUpActivity::class.java)
+                startActivity(intent)
+            }
+            btnLogin.setOnClickListener {
+                validateLogin()
+                startActivity(Intent(this, HomeActivity::class.java))
+
+            }
         }
 
-
-        btnLogin.setOnClickListener {
-            validateLogin()
-        }
-    }
 
     fun validateLogin(){
 //        var error=false
@@ -53,6 +56,8 @@ class LogInActivity : AppCompatActivity() {
 //        if (!error){
 //
 //        }
+
+
 
     }
 }
