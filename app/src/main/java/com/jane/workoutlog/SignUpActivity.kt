@@ -9,55 +9,37 @@ import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.jane.workoutlog.databinding.ActivityLogInBinding
+import com.jane.workoutlog.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
-    lateinit var btnSignUp: Button
-    lateinit var tvLongIn:TextView
-    lateinit var tilName: TextInputLayout
-    lateinit var etName: TextInputEditText
-    lateinit var tilEmail: TextInputLayout
-    lateinit var etEmail: TextInputEditText
-    lateinit var tilLast: TextInputLayout
-    lateinit var etLast: TextInputEditText
-    lateinit var tilPassword: TextInputLayout
-    lateinit var etPassword: TextInputEditText
-    lateinit var tilConfirm: TextInputLayout
-    lateinit var etConfirm: TextInputEditText
+    lateinit var binding: ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        btnSignUp = findViewById(R.id.btnSignUp)
-        tilName = findViewById(R.id.tillName)
-        etName = findViewById(R.id.etName)
-        tvLongIn = findViewById(R.id.tvLogIn)
-        tilLast = findViewById(R.id.tilLast)
-        etLast = findViewById(R.id.etLast)
-        tilEmail = findViewById(R.id.tilEmail)
-        etEmail = findViewById(R.id.etEmail)
-        tilPassword = findViewById(R.id.tilPassword)
-        etPassword = findViewById(R.id.etPassword)
-        tilConfirm = findViewById(R.id.tilConfirm)
-        etConfirm = findViewById(R.id.etconfirm)
-        tvLongIn.setOnClickListener {
-            var intent = Intent(this, LogInActivity::class.java)
-            startActivity(intent)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        binding.btnSignUp.setOnClickListener{
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
-        btnSignUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             validateSignUP()
+            startActivity(Intent(this,HomeActivity::class.java))
         }
     }
        fun validateSignUP(){
         var error=false
-        tilEmail.error=null
-        tilPassword.error=null
-        var name=etName.text.toString()
-        var Last=etLast.text.toString()
-        var Email=etEmail.text.toString()
-        var Password=etPassword.text.toString()
-        var Confirm=etConfirm.text.toString()
+       binding.tilEmail.error=null
+       binding.tilPassword.error=null
+        var name=binding.etName.text.toString()
+        var Last=binding.etLast.text.toString()
+        var Email=binding.etEmail.text.toString()
+        var Password=binding.etPassword.text.toString()
+        var Confirm=binding.etconfirm.text.toString()
         if (name.isBlank()){
-            tilName.error="firstname is required"
+            binding.tillName.error="firstname is required"
             error=true
         }
 
@@ -65,29 +47,29 @@ class SignUpActivity : AppCompatActivity() {
 
 
             if (Last.isBlank()){
-                tilLast.error="Lastname is required"
+               binding. tilLast.error="Lastname is required"
                 error=true
             }
             if (Email.isBlank()){
-                tilEmail.error="Email is required"
+                binding.tilEmail.error="Email is required"
                 error=true
             }
            if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
-               tilEmail.error="Not a valid email address"
+              binding. tilEmail.error="Not a valid email address"
                error=true
 
            }
             if (Password.isBlank()){
-                tilPassword.error="Password is required"
+               binding. tilPassword.error="Password is required"
                 error=true
             }
             if (Confirm.isBlank()){
-                tilConfirm.error="PasswordConfirmation is required"
+                binding.tilConfirm.error="PasswordConfirmation is required"
                 error=true
             }
 
             if (Password!=Confirm){
-                tilConfirm.error="Wrong Password"
+                binding.tilConfirm.error="Wrong Password"
                 error=true
 
             }

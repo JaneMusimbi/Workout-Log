@@ -7,22 +7,21 @@ import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jane.workoutlog.databinding.ActivityHomeBinding
+import com.jane.workoutlog.databinding.ActivitySignUpBinding
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var bnvHome:BottomNavigationView
-    lateinit var fcvHome:FragmentContainerView
+   lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        CostViews()
-        setupBottomNav()
+       binding=ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
     }
 
-        fun CostViews(){
-        bnvHome=findViewById(R.id.bottom_navigation)
-        fcvHome=findViewById(R.id.fcvHome)}
+
     fun setupBottomNav(){
-        bnvHome.setOnItemSelectedListener {  item ->
+        binding.bottomNavigation.setOnItemSelectedListener {  item ->
             when(item.itemId){
                 R.id.plan ->{
                     var  transaction=supportFragmentManager.beginTransaction()
